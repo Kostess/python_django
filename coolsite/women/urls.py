@@ -22,4 +22,6 @@ urlpatterns = [
     path('', index),
     path('cat/', categorys),
     path('cat/<int:cat_id>/', category),
+    path('students/', students),
+    path('students/<slug:student>/', student),
 ]
