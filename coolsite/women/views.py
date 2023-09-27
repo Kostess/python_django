@@ -1,11 +1,13 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
+
 # для хранения представления
 # Create your views here.
 def index(request):
     res = request.GET
     print(request.GET)
-    return HttpResponse(f'Главная страница основого приложения <br> {dict(res)["group"][0]}')
+    return HttpResponse(f'Главная страница основого приложения <br> {dict(res)}')
 
 def categorys(request):
     return HttpResponse('<h1>Ссылки по категориям </h1>')
@@ -13,6 +15,8 @@ def categorys(request):
 def category(request, cat_id):
     if cat_id > 1000:
         raise Http404()
+    if cat_id < 50:
+        return redirect('home', permanent=True)
     return HttpResponse(f'<h1>Номер категории-- </h1> <br> {cat_id}')
 
 def students(request):
