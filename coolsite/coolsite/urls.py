@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from women.views import pageNotFound
+from women.views import pageNotFound, errorServer, accessDenied, unableToProcessRequest
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +25,6 @@ urlpatterns = [
 ]
 
 handler404 = pageNotFound
+handler500 = errorServer
+handler400 = accessDenied
+handler403 = unableToProcessRequest

@@ -24,4 +24,6 @@ urlpatterns = [
     path('cat/<int:cat_id>/', category),
     path('students/', students),
     path('students/<int:student>/', student),
+    path('years/', years, name='years'),
+    path('years/<int:year>/', year),
 ]
