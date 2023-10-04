@@ -3,13 +3,15 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpRespons
     HttpResponseServerError
 from django.shortcuts import render, redirect
 
+menu = [1, 3, 4, 7]
 
 # для хранения представления
 # Create your views here.
 def index(request):
-    res = request.GET
-    print(request.GET)
-    return HttpResponse(f'Главная страница основого приложения <br> {dict(res)}')
+    data = {'title': 'Главная страница',
+            'menu': menu,
+            }
+    return render(request, "women/index.html", context=data)
 
 def categorys(request):
     return HttpResponse('<h1>Ссылки по категориям </h1>')
@@ -66,7 +68,7 @@ def years(request):
                         '<li>2014: Присоединение Крыма Россией.</li>'
                         '</ul>')
 
-def year(request, year):
+def year_archive(request, year):
     list_images = {
         2000: "https://proprikol.ru/wp-content/uploads/2020/10/kartinki-oon-1.jpg",
         2001: "https://prod.static9.net.au/fs/1f11d532-69fe-4ff0-ba7e-f90db3f24505",

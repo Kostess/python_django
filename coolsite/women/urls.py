@@ -14,16 +14,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import path
-
+from django.urls import path, register_converter
+from women.classMarsh import FourDigitYearConverter
 from women.views import *
+
+
+
+register_converter(FourDigitYearConverter, "yyyy")
 
 urlpatterns = [
     path('', index, name='home'),
     path('cat/', categorys),
+    path("articles/<yyyy:year>/", year_archive),
     path('cat/<int:cat_id>/', category),
     path('students/', students),
     path('students/<int:student>/', student),
     path('years/', years, name='years'),
-    path('years/<int:year>/', year),
+    #path('years/<int:year>/', year),
 ]
