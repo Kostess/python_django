@@ -7,11 +7,25 @@ menu = [1, 3, 4, 7]
 
 # для хранения представления
 # Create your views here.
+
 def index(request):
     data = {'title': 'Главная страница',
             'menu': menu,
+            'int': 2,
+            'float': 2.1,
+            'str': 'Hi',
+            'bool': True,
+            'list': [2, 2.1, 'Hi', True],
+            'tuple': (2, 2.1, 'Hi', True),
+            'set': {2, 2.1, 'Hi', True},
+            'dict': {'name': 'Igore', 'age': 23},
+            'obj': 'class',
             }
-    return render(request, "women/index.html", context=data)
+
+    return render(request, "women/index.html", context= data)
+
+def alphabet_symbol(request, smb):
+    return HttpResponse(f'<h1>{smb}</h1>')
 
 def categorys(request):
     return HttpResponse('<h1>Ссылки по категориям </h1>')
