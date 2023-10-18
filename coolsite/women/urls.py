@@ -24,9 +24,9 @@ register_converter(Alphabet, "alphabet")
 
 urlpatterns = [
     path('', index, name='home'),
-    path('cat/', categorys),
-    path("articles/<alphabet:smb>/", alphabet_symbol),
-    path('cat/<int:cat_id>/', category),
+    path('cat/', categorys, name='category'),
+    path("articles/<alphabet:smb>/", alphabet_symbol, name='simbol'),
+    path('cat/<int:cat_id>/', category, name='post'),
     path('students/', students),
     path('students/<int:student>/', student),
     path('years/', years, name='years'),

@@ -3,10 +3,19 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpRespons
     HttpResponseServerError
 from django.shortcuts import render, redirect
 
-menu = [1, 3, 4, 7]
+menu = [{'title': 'Главная', 'url_name': 'home'},
+        {'title': 'О сайте', 'url_name': 'about'},
+        {'title': 'Категории', 'url_name': 'category'},
+]
 
 # для хранения представления
 # Create your views here.
+
+data_db = [{'id':1, 'title': 'Гришин Никита Сергеевич', 'intersting': 'Литература, музыка, фотография, вязание, программирование', 'is_sport': False},
+           {'id':2, 'title': 'Ушаков Никита Юрьевич', 'intersting': 'Плавание, Туризм, Бокс', 'is_sport': True},
+           {'id': 3, 'title': 'Солодкий Никита Олегович', 'intersting': 'Игры, велосипед, тренажерный зал', 'is_sport': True},
+
+           ]
 
 def index(request):
     data = {'title': 'Главная страница',
@@ -20,21 +29,24 @@ def index(request):
             'set': {2, 2.1, 'Hi', True},
             'dict': {'name': 'Igore', 'age': 23},
             'obj': 'class',
+            'posts': data_db,
             }
 
     return render(request, "women/index.html", context= data)
+
+
 
 def alphabet_symbol(request, smb):
     return HttpResponse(f'<h1>{smb}</h1>')
 
 def categorys(request):
-    return HttpResponse('<h1>Ссылки по категориям </h1>')
+    data = {'title': 'Категории',
+            'menu': menu,
+            'posts': data_db,
+            }
+    return render(request, "women/category.html", context= data)
 
 def category(request, cat_id):
-    if cat_id > 1000:
-        raise Http404()
-    if cat_id < 50:
-        return redirect('home', permanent=True)
     return HttpResponse(f'<h1>Номер категории-- </h1> <br> {cat_id}')
 
 def students(request):

@@ -25,5 +25,22 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci assumenda corporis dolorum eaque ipsum maxime
         mollitia nam obcaecati officiis, provident reiciendis sapiente sunt tempora temporibus. Eum facere laborum pariatur.
     </p>
+    {% for o in posts %}
+        <ul>
+            {% if o.is_sport %}
+                <h2>{{ o.title }}</h2>
+            {% else %}
+                <h6>{{ o.title }}</h6>
+            {% endif %}
+
+            <p>{{ o.intersting }}</p>
+
+            <div><a href="{% url 'post' o.id %}">Читать пост</a></div>
+
+            {% if not forloop.last %}
+                <hr>
+            {% endif %}
+        </ul>
+    {% endfor %}
 </body>
 </html>
