@@ -5,42 +5,32 @@
     <title>{{title}}</title>
 </head>
 <body>
-    <h1>{{title|cut:" "|cut:"с"}}</h1>
-    <p>{{menu}}</p>
-
-    <h2>Типы данных</h2>
-    <div>
-        <p>int: {{int}}</p>
-        <p>float: {{float}}</p>
-        <p>str: {{str}}</p>
-        <p>bool: {{bool}}</p>
-        <p>list: {{list}}</p>
-        <p>tuple: {{tuple}}</p>
-        <p>set: {{set}}</p>
-        <p>dict: {{dict}}</p>
-        <p>obj: {{obj}}</p>
-    </div>
-    <h2>Фильтры</h2>
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci assumenda corporis dolorum eaque ipsum maxime
-        mollitia nam obcaecati officiis, provident reiciendis sapiente sunt tempora temporibus. Eum facere laborum pariatur.
-    </p>
-    {% for o in posts %}
-        <ul>
-            {% if o.is_sport %}
-                <h2>{{ o.title }}</h2>
-            {% else %}
-                <h6>{{ o.title }}</h6>
-            {% endif %}
-
-            <p>{{ o.intersting }}</p>
-
-            <div><a href="{% url 'post' o.id %}">Читать пост</a></div>
-
-            {% if not forloop.last %}
-                <hr>
-            {% endif %}
-        </ul>
-    {% endfor %}
+    <header>
+        <nav>
+            <ul>
+                {% for i in menu %}
+                <li>
+                    {% if forloop.first %}
+                        <a href="{% url i.url_name %}" title="first">
+                            {{i.title}}
+                        </a>
+                    {% elif forloop.counter == 2 %}
+                        <a href="{% url i.url_name %}" title="second">
+                            {{i.title}}
+                        </a>
+                    {% elif forloop.last %}
+                        <a href="{% url i.url_name %}" title="last">
+                            {{i.title}}
+                        </a>
+                    {% else %}
+                        <a href="{% url i.url_name %}" title="standart">
+                            {{i.title}}
+                        </a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
 </body>
 </html>
