@@ -3,31 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
+    <style>
+        .font {
+            font-size: 20px;
+            color: red
+        }
+    </style>
 </head>
 <body>
     <header>
+        <h1>{{title}}</h1>
         <nav>
             <ul>
                 {% for i in menu %}
-                <li>
-                    {% if forloop.first %}
-                        <a href="{% url i.url_name %}" title="first">
-                            {{i.title}}
-                        </a>
-                    {% elif forloop.counter == 2 %}
-                        <a href="{% url i.url_name %}" title="second">
-                            {{i.title}}
-                        </a>
-                    {% elif forloop.last %}
-                        <a href="{% url i.url_name %}" title="last">
-                            {{i.title}}
-                        </a>
-                    {% else %}
-                        <a href="{% url i.url_name %}" title="standart">
-                            {{i.title}}
-                        </a>
-                    {% endif %}
-                </li>
+                    <li>
+                        {% if title == i.title %}
+                            {% if forloop.first %}
+                                <a href="{% url i.url_name %}" title="first"  class="font">
+                                    {{i.title}}
+                                </a>
+                            {% elif forloop.counter == 2 %}
+                                <a href="{% url i.url_name %}" title="second"  class="font">
+                                    {{i.title}}
+                                </a>
+                            {% elif forloop.last %}
+                                <a href="{% url i.url_name %}" title="last"  class="font">
+                                    {{i.title}}
+                                </a>
+                            {% else %}
+                                <a href="{% url i.url_name %}" title="standart"  class="font">
+                                    {{i.title}}
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            {% if forloop.first %}
+                                <a href="{% url i.url_name %}" title="first">
+                                    {{i.title}}
+                                </a>
+                            {% elif forloop.counter == 2 %}
+                                <a href="{% url i.url_name %}" title="second">
+                                    {{i.title}}
+                                </a>
+                            {% elif forloop.last %}
+                                <a href="{% url i.url_name %}" title="last">
+                                    {{i.title}}
+                                </a>
+                            {% else %}
+                                <a href="{% url i.url_name %}" title="standart">
+                                    {{i.title}}
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    </li>
                 {% endfor %}
             </ul>
         </nav>

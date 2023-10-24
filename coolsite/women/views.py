@@ -19,7 +19,7 @@ data_db = [{'id':1, 'title': 'Гришин Никита Сергеевич', 'in
            ]
 
 def index(request):
-    data = {'title': 'Главная страница',
+    data = {'title': 'Главная',
             'menu': menu,
             }
     return render(request, "women/index.html", context= data)
