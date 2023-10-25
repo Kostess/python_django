@@ -6,29 +6,37 @@ from django.shortcuts import render, redirect
 menu = [{'title': 'Главная', 'url_name': 'home'},
         {'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Категории', 'url_name': 'category'},
-        # {'title': 'Логин', 'url_name': 'home'},
 ]
 
 # для хранения представления
 # Create your views here.
 
-data_db = [{'id':1, 'title': 'Гришин Никита Сергеевич', 'intersting': 'Литература, музыка, фотография, вязание, программирование', 'is_sport': False},
-           {'id':2, 'title': 'Ушаков Никита Юрьевич', 'intersting': 'Плавание, Туризм, Бокс', 'is_sport': True},
-           {'id': 3, 'title': 'Солодкий Никита Олегович', 'intersting': 'Игры, велосипед, тренажерный зал', 'is_sport': True},
-
+data_db = [{'id':1, 'FIO': 'Маганков Кирилл Александрович', 'intersting': 'плетение биссером, спорт, бокс, футбол', 'is_sport': True},
+           {'id':2, 'FIO': 'Куленок Станислав Владимирович', 'intersting': 'плавание, ходьба скандинавская, шахматы', 'is_sport': False},
+           {'id': 3, 'FIO': 'Короткая Софья Геннадьевна', 'intersting': 'конный спорт, литература, музыка, рисование', 'is_sport': True},
+           {'id': 4, 'FIO': 'Ушаков Никита Юрьевич', 'intersting': 'вязание, шахматы, шашки', 'is_sport': False},
            ]
 
 def index(request):
     data = {'title': 'Главная',
             'menu': menu,
+            'posts': data_db,
             }
     return render(request, "women/index.html", context= data)
 
 def category(request):
     data = {'title': 'Категории',
             'menu': menu,
+            'posts': data_db,
             }
     return render(request, "women/category.html", context= data)
+
+# def categorys(request):
+#     data = {'title': 'Категории',
+#             'menu': menu,
+#             'posts': data_db,
+#             }
+#     return render(request, "women/category.html", context= data)
 
 def about(request):
     data = {'title': 'О сайте',

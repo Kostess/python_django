@@ -25,5 +25,6 @@ register_converter(Alphabet, "alphabet")
 urlpatterns = [
     path('', index, name='home'),
     path('category/', category,name='category'),
+    # path('category/<str:name>', categorys,name='categorys'),
     path('about/', about, name='about'),
 ]
