@@ -1,13 +1,10 @@
 {% extends 'base.html' %}
-{% block title %}
-    <h1>{{title}}</h1>
-{% endblock %}
 
 {% block content %}
-    <ul>
+    <ul class="centring">
         {% for p in posts %}
             <li>
-                <h2><a href="">{{ p.FIO }}</a></h2>
+                <h2>{{ p.FIO }}</h2>
                 <p>{{ p.intersting }}</p>
                {% if not forloop.last %}
                 <hr>
