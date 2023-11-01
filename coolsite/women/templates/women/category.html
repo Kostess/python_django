@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    {% include 'include/html.html' only %}
     <ul class="centring">
         {% for p in posts %}
             <li>
@@ -12,4 +13,5 @@
             </li>
         {% endfor %}
     </ul>
+    {% include 'include/html.html' only with year=2023 %}
 {% endblock %}

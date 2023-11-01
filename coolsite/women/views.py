@@ -29,7 +29,7 @@ def category(request):
             'menu': menu,
             'posts': data_db,
             }
-    return render(request, "women/category.html", context= data)
+    return render(request, "women/3D_kub.html")
 
 # def categorys(request):
 #     data = {'title': 'Категории',
