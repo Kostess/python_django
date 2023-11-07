@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% include 'include/html.html' only %}
     <ul class="centring">
         {% for p in posts %}
             <li>
-                <h2>{{ p.FIO }}</h2>
+                <h2><a href="{% url 'student' p.url %}">{{ p.FI }}</a></h2>
                 <p>{{ p.intersting }}</p>
                {% if not forloop.last %}
                 <hr>
@@ -13,5 +12,4 @@
             </li>
         {% endfor %}
     </ul>
-    {% include 'include/html.html' only with year=2023 %}
 {% endblock %}

@@ -27,4 +27,5 @@ urlpatterns = [
     path('category/', category,name='category'),
     # path('category/<str:name>', categorys,name='categorys'),
     path('about/', about, name='about'),
+    path('category/<str:name>', student, name='student'),
 ]

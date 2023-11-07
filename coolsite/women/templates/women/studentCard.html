@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+{% for i in posts_student %}
+    {% if name_student == i.url%}
+        <div class="wrapper_st">
+            <div class="card">
+                <div class="media">
+                    <img src="{% static i.img %}" alt="aaaaaaaa">
+                </div>
+                <h2>{{ i.FI }}</h2>
+                <button id="btn">За спорт?</button>
+            </div>
+        </div>
+        <span>{{ i.is_sport }}</span>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
