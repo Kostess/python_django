@@ -21,3 +21,8 @@ def main():
 # python manage.py runserver --insecure
 if __name__ == '__main__':
     main()
+"""БД
+python manage.py makemigrations создание миграции
+python manage.py sqlmigrate women 0001  просмотреть sql запрос миграции
+python manage.py migrate
+"""
