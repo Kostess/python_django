@@ -12,6 +12,12 @@ class Student(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_money = models.BooleanField(default=True)
 
-# Create your models here.
+class Book(models.Model):
+    nameBook = models.CharField(max_length=255)
+    author = models.CharField(max_length=255)
+    yearPublication = models.IntegerField(default=0)
+    publishingHouse = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    price = models.IntegerField(default=0)
 
 
