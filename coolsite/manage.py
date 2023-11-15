@@ -25,4 +25,6 @@ if __name__ == '__main__':
 python manage.py makemigrations создание миграции
 python manage.py sqlmigrate women 0001  просмотреть sql запрос миграции
 python manage.py migrate
+
+python manage.py shell_plus --print-sql
 """

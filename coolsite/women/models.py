@@ -12,6 +12,17 @@ class Student(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_money = models.BooleanField(default=True)
 
+def __str__(self):
+    return self.fio
+
+"""
+    создание записей Student.objects.create(fio="Асадов Наил", interesting="конный спорт, литература, музыка")
+    выбор всех записей Student.objects.all()
+    выбор записей по критерию Student.objects.filter()
+    выбор одной записи Student.objects.get()
+    выбор 
+"""
+
 class Book(models.Model):
     nameBook = models.CharField(max_length=255)
     author = models.CharField(max_length=255)
