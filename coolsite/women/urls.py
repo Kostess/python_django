@@ -29,6 +29,7 @@ urlpatterns = [
     path('about/', about, name='about'),
     path('category/<str:name>', student, name='student'),
     path('categoryBook', categoryBook, name='categoryBook'),
+    path('categoryBookID', categoryBookID, name='categoryBookID'),
     path('categoryBook/<int:id_book>', bookInfoID, name='bookInfoID'),
     path('categoryBook/<slug:name>', bookInfo, name='bookInfo'),
 ]

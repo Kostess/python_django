@@ -51,6 +51,8 @@ class Book(models.Model):
 
     def get_absolute_url(self):
         return reverse('bookInfo', kwargs={'name': self.slug})
-        # return reverse('bookInfoID', kwargs={'id_book': self.pk})
 
+
+    def get_absolute_url_ID(self):
+        return reverse('bookInfoID', kwargs={'id_book': self.pk})
 

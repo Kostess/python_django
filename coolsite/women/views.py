@@ -9,6 +9,7 @@ menu = [{'title': 'Главная', 'url_name': 'home'},
         {'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Категории', 'url_name': 'category'},
         {'title': 'Список книг', 'url_name': 'categoryBook'},
+        {'title': 'Список книг ID', 'url_name': 'categoryBookID'},
 ]
 
 # для хранения представления
@@ -82,6 +83,15 @@ def categoryBook(request):
         'menu': menu,
     }
     return render(request, 'women/categoryBook.html', context=data)
+
+def categoryBookID(request):
+    books = Book.objects.all()
+    data = {
+        'title': 'Список книг ID',
+        'books': books,
+        'menu': menu,
+    }
+    return render(request, 'women/BookInfoID.html', context=data)
 
 def bookInfo(request, name):
     book = get_object_or_404(Book, slug=name)
