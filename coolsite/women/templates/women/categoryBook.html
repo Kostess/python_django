@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <ul>
+        {% for book in books %}
+            <li><a href="{{ book.get_absolute_url }}">{{ book.nameBook }}</a></li>  <!-- Выводим название каждой книги -->
+        {% endfor %}
+    </ul>
+
+{% endblock %}

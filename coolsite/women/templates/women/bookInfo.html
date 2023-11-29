@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>Название: {{ book.nameBook }}</h3>
+    <p>Автор: {{ book.author }}</p>
+    <p>Издание: {{ book.publishingHouse }}</p>
+    <p>Год издания: {{ book.yearPublication }}</p>
+    <p style="text-weight: bold;">Цена: {{ book.price }}р.</p>
+    {% if book.description != '' %}
+        <p>Описание: {{ book.description }}</p>
+    {% endif %}
+{% endblock %}

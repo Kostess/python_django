@@ -28,4 +28,7 @@ urlpatterns = [
     # path('category/<str:name>', categorys,name='categorys'),
     path('about/', about, name='about'),
     path('category/<str:name>', student, name='student'),
+    path('categoryBook', categoryBook, name='categoryBook'),
+    path('categoryBook/<int:id_book>', bookInfoID, name='bookInfoID'),
+    path('categoryBook/<slug:name>', bookInfo, name='bookInfo'),
 ]

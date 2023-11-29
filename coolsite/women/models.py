@@ -1,5 +1,8 @@
 from django.db import models
 import datetime
+
+from django.urls import reverse
+
 # хранение ORM-моделей для представления данных из БД
 
 dt_now = datetime.datetime.now()
@@ -42,7 +45,12 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     yearPublication = models.IntegerField(default=0)
     publishingHouse = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, default='')
     price = models.IntegerField(default=0)
+    slug = models.SlugField(max_length=255, db_index=True, unique=True)
+
+    def get_absolute_url(self):
+        return reverse('bookInfo', kwargs={'name': self.slug})
+        # return reverse('bookInfoID', kwargs={'id_book': self.pk})
 
 

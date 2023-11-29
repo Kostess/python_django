@@ -1,11 +1,14 @@
 from django.core.exceptions import PermissionDenied, BadRequest
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseBadRequest, HttpResponseForbidden, \
     HttpResponseServerError
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+
+from .models import Book
 
 menu = [{'title': 'Главная', 'url_name': 'home'},
         {'title': 'О сайте', 'url_name': 'about'},
         {'title': 'Категории', 'url_name': 'category'},
+        {'title': 'Список книг', 'url_name': 'categoryBook'},
 ]
 
 # для хранения представления
@@ -70,6 +73,33 @@ def about(request):
             'menu': menu,
             }
     return render(request, "women/about.html", context= data)
+
+def categoryBook(request):
+    books = Book.objects.all()
+    data = {
+        'title': 'Список книг',
+        'books': books,
+        'menu': menu,
+    }
+    return render(request, 'women/categoryBook.html', context=data)
+
+def bookInfo(request, name):
+    book = get_object_or_404(Book, slug=name)
+    data = {
+        'title': 'Информация о книге',
+        'book': book,
+        'menu': menu,
+    }
+    return render(request, 'women/bookInfo.html', context=data)
+
+def bookInfoID(request, id_book):
+    book = get_object_or_404(Book, pk=id_book)
+    data = {
+        'title': 'Информация о книге',
+        'book': book,
+        'menu': menu,
+    }
+    return render(request, 'women/bookInfo.html', context=data)
 
 #404
 def pageNotFound(request, exception):
